@@ -17,23 +17,35 @@
 <?import javafx.scene.control.Tooltip?>
 
 <?import javafx.scene.control.ToggleButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
 <BorderPane fx:id="mainBorderPane" fx:controller="com.saransh.todolist.Controller" xmlns:fx="http://javafx.com/fxml">
     <top>
         <VBox>
-            <MenuBar>
-                <Menu text="File" >
-                    <MenuItem text="New .." onAction="#showNewItemDialog" mnemonicParsing="false"/>
+            <MenuBar styleClass="topMenu">
+                <Menu styleClass="MenuBox">
+                    <text>File</text>
+                    <MenuItem onAction="#showNewItemDialog" mnemonicParsing="false">
+                        <text>New...</text>
+                    </MenuItem>
                     <SeparatorMenuItem/>
-                    <MenuItem text="Exit" onAction="#handleExit" mnemonicParsing="false"/>
+                    <MenuItem onAction="#handleExit" mnemonicParsing="false">
+                        <text>Exit</text>
+                    </MenuItem>
                 </Menu>
-                <Menu text="Help">
-                    <MenuItem text="Getting Started" onAction="#gettingStarted"/>
+                <Menu styleClass="MenuBox">
+                    <text>Help</text>
+                    <MenuItem  onAction="#gettingStarted">
+                        <text>Getting Started</text>
+                    </MenuItem>
                     <SeparatorMenuItem/>
-                    <MenuItem text="About" onAction="#about"/>
+                    <MenuItem onAction="#about">
+                        <text>About</text>
+                    </MenuItem>
                 </Menu>
             </MenuBar>
-            <ToolBar fx:id="toolbar">
-                <HBox spacing="10">
+            <ToolBar fx:id="toolbar" styleClass="ToolBarMain">
+                <HBox spacing="10" styleClass="ToolBox">
                     <Button onAction="#showNewItemDialog">
                         <tooltip>
                             <Tooltip text="Add a New Todo Item."/>
@@ -69,16 +81,19 @@
                             <Tooltip text="Button Down: Show Today's Item only. Button Up: Show all Items."/>
                         </tooltip>
                     </ToggleButton>
+                    <ComboBox fx:id="fontList" onAction="#handleFontChange" style="-fx-pref-height: 32px">
+
+                    </ComboBox>
                 </HBox>
             </ToolBar>
         </VBox>
     </top>
     <left>
-        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed"/>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed" />
     </left>
     <center>
-        <VBox style="-fx-background-color: white">
-            <TextArea fx:id="itemDetailTextArea" VBox.vgrow="ALWAYS" style="-fx-font-size: 14" wrapText="true"
+        <VBox >
+            <TextArea fx:id="itemDetailTextArea" styleClass="descText" VBox.vgrow="ALWAYS" style="-fx-font-size: 14" wrapText="true"
                       editable="false"/>
             <HBox spacing="5" prefHeight="20">
                 <padding>
@@ -86,10 +101,13 @@
                 </padding>
                 <Label fx:id="deadlineLabel">
                     <font>
-                        <Font name="Times New Roman bold" size="15"/>
+                        <Font name="Arial bold" size="15"/>
                     </font>
                 </Label>
             </HBox>
         </VBox>
     </center>
+    <stylesheets>
+        <URL value="@mainWindowEdit.css" />
+    </stylesheets>
 </BorderPane>

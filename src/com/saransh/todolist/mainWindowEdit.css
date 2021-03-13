@@ -1,0 +1,47 @@
+.root {
+-fx-font-size: 14px;
+}
+.topMenu {
+-fx-background-color: #A377EE;
+}
+.ToolBarMain {
+-fx-background-color: #8259CC;
+-fx-effect: innershadow( gaussian ,#55339B, 5,0.2,0,2 );
+
+}
+.ToolBox Button{
+-fx-background-color: #8259CC;
+-fx-border-width: 0;
+}
+.ToolBox Button:hover{
+-fx-background-color: #613CAB;
+}
+.ToolBox ToggleButton{
+-fx-background-color: #8259CC;
+-fx-text-fill:white;
+-fx-border-width: 0;
+}
+.ToolBox ToggleButton:hover{
+-fx-background-color: #613CAB;
+}
+
+.ToolBox ComboBox{
+-fx-background-color: #6F46C0;
+-fx-text-fill:white;
+-fx-border-width: 0;
+}
+.ToolBox ComboBox:hover{
+-fx-background-color: #613CAB;
+
+}
+
+.descText {
+-fx-background-color: #5C3B9C;
+-fx-text-fill: white;
+}
+
+.descText .content{
+-fx-background-color: #5C3B9C;
+-fx-effect: innershadow( gaussian ,#55339B, 5,0.2,0,2 );
+
+}

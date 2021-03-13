@@ -22,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -60,6 +61,9 @@ public class Controller {
     @FXML
     private ToggleButton filterToggleButton;
 
+    @FXML
+    private ComboBox<String> fontList;
+
     private FilteredList<TodoItem> filteredList;
     private Predicate<TodoItem> wantAllItems;
     private Predicate<TodoItem> wantTodayItems;
@@ -70,6 +74,7 @@ public class Controller {
         setupEachButton();
         setupFullView();
         setupPredicates();
+        setupFonts();
 
         filteredList = new FilteredList<>(TodoData.getInstance().getTodoItems(), wantAllItems);
 
@@ -184,6 +189,24 @@ public class Controller {
         wantTodayItems = item -> item.getDeadline().equals(LocalDate.now());
     }
 
+    private void setupFonts() {
+        fontList.getItems().addAll(Font.getFontNames());
+        fontList.getSelectionModel().select(0);
+        fontList.setCellFactory((ListView<String> listView) -> {
+            final ListCell<String> cell = new ListCell<String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item != null) {
+                        setText(item);
+                        setFont(new Font(item, 12));
+                    }
+                }
+            };
+            //cell.setPrefWidth(120);
+            return cell;
+        });
+    }
     @FXML
     public void showNewItemDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -321,5 +344,10 @@ public class Controller {
             todoListView.getSelectionModel().select(selectedItem);
             todoListView.getSelectionModel().selectFirst();
         }
+    }
+
+    @FXML
+    public void handleFontChange() {
+        mainBorderPane.setStyle("-fx-font-family:"+"\""+(String)fontList.getValue()+"\""+";");
     }
 }
