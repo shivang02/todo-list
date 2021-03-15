@@ -81,15 +81,14 @@
                             <Tooltip text="Button Down: Show Today's Item only. Button Up: Show all Items."/>
                         </tooltip>
                     </ToggleButton>
-                    <ComboBox fx:id="fontList" onAction="#handleFontChange" style="-fx-pref-height: 32px">
-
-                    </ComboBox>
+                    <ComboBox fx:id="fontList" onAction="#handleFontChange" style="-fx-pref-height: 32px"/>
+                    <ComboBox fx:id="fontSizeList" onAction="#handleFontSizeChange" style="-fx-pref-height:32px"/>
                 </HBox>
             </ToolBar>
         </VBox>
     </top>
     <left>
-        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed" />
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed" styleClass="sidePane"/>
     </left>
     <center>
         <VBox >

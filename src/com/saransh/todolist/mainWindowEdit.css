@@ -1,9 +1,16 @@
 .root {
 -fx-font-size: 14px;
 }
+
 .topMenu {
 -fx-background-color: #A377EE;
 }
+
+.MenuBox:hover {
+    -fx-cursor:hand;
+}
+
+
 .ToolBarMain {
 -fx-background-color: #8259CC;
 -fx-effect: innershadow( gaussian ,#55339B, 5,0.2,0,2 );
@@ -15,6 +22,7 @@
 }
 .ToolBox Button:hover{
 -fx-background-color: #613CAB;
+-fx-cursor: hand;
 }
 .ToolBox ToggleButton{
 -fx-background-color: #8259CC;
@@ -23,6 +31,12 @@
 }
 .ToolBox ToggleButton:hover{
 -fx-background-color: #613CAB;
+-fx-cursor: hand;
+}
+
+.ToolBox ToggleButton:selected {
+    -fx-background-color: #613CAB;
+
 }
 
 .ToolBox ComboBox{
@@ -42,6 +56,77 @@
 
 .descText .content{
 -fx-background-color: #5C3B9C;
--fx-effect: innershadow( gaussian ,#55339B, 5,0.2,0,2 );
+-fx-effect: innershadow( gaussian ,#3E217F, 5,0.2,0,2 );
 
 }
+
+.sidePane:children{
+    -fx-background-color: #5C3B9C;
+    -fx-effect: innershadow( gaussian ,#3E217F, 5,0.2,-2,2 );
+
+}
+
+.sidePane:filled {
+    -fx-background-color: #805BC0;
+    -fx-effect: innershadow( gaussian ,#55339B, 5,0.2,-2,2 );
+}
+
+
+.listCellBefore {
+   -fx-background-color:#D73B5D;
+   -fx-cursor: hand;
+}
+.listCellBefore:hover{
+   -fx-background-color:#F04B6F;
+   -fx-cursor: hand;
+   -fx-border-width: 0 0 5 0;
+   -fx-border-color: #D73B5D;
+}
+.listCellBefore:selected {
+    -fx-background-color:#F04B6F;
+    -fx-cursor: hand;
+    -fx-border-width: 0 0 5 0;
+    -fx-border-color: #D73B5D;
+}
+
+
+.listCellToday {
+   -fx-background-color:#FCE956;
+   -fx-cursor: hand;
+}
+.listCellToday:hover{
+   -fx-background-color:#E6F859;
+   -fx-cursor: hand;
+   -fx-border-width: 0 0 5 0;
+   -fx-border-color: #FCE956;
+}
+.listCellToday:selected {
+    -fx-background-color:#E6F859;
+    -fx-cursor: hand;
+    -fx-border-width: 0 0 5 0;
+    -fx-border-color: #FCE956;
+}
+
+
+.listCellLate {
+   -fx-background-color:#3AC048;
+   -fx-cursor: hand;
+}
+.listCellLate:hover{
+   -fx-background-color:#4BF05C;
+   -fx-cursor: hand;
+   -fx-border-width: 0 0 5 0;
+   -fx-border-color: #3AC048;
+}
+.listCellLate:selected {
+    -fx-background-color:#4BF05C;
+    -fx-cursor: hand;
+    -fx-border-width: 0 0 5 0;
+    -fx-border-color: #3AC048;
+}
+
+.listCellNull {
+   -fx-background-color:#B8A2D6;
+   -fx-cursor: hand;
+}
+

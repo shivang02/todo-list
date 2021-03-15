@@ -25,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.w3c.dom.ranges.Range;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,8 +34,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Controller {
 
@@ -63,6 +67,9 @@ public class Controller {
 
     @FXML
     private ComboBox<String> fontList;
+
+    @FXML
+    private ComboBox<Integer> fontSizeList;
 
     private FilteredList<TodoItem> filteredList;
     private Predicate<TodoItem> wantAllItems;
@@ -95,14 +102,19 @@ public class Controller {
                         super.updateItem(item, empty);
                         if (empty) {
                             this.setText(null);
+
+                            this.getStyleClass().add("nullListCell");
                         } else {
                             this.setText(item.getShortDescription());
                             if (item.getDeadline().isBefore(LocalDate.now().plusDays(1))) {
-                                this.setTextFill(Color.RED);
+
+                                this.getStyleClass().add("listCellBefore");
                             } else if (item.getDeadline().equals(LocalDate.now().plusDays(1))) {
-                                this.setTextFill(Color.BROWN);
+
+                                this.getStyleClass().add("listCellToday");
                             } else {
-                                this.setTextFill(Color.BLACK);
+
+                                this.getStyleClass().add("listCellLate");
                             }
                         }
                     }
@@ -189,7 +201,12 @@ public class Controller {
         wantTodayItems = item -> item.getDeadline().equals(LocalDate.now());
     }
 
+    /**Setup Fonts and size**/
     private void setupFonts() {
+        List<Integer> range = IntStream.range(12,30).boxed().collect(Collectors.toList());
+         fontSizeList.getItems().addAll(range);
+        fontSizeList.getSelectionModel().select(0);
+
         fontList.getItems().addAll(Font.getFontNames());
         fontList.getSelectionModel().select(0);
         fontList.setCellFactory((ListView<String> listView) -> {
@@ -199,13 +216,15 @@ public class Controller {
                     super.updateItem(item, empty);
                     if (item != null) {
                         setText(item);
-                        setFont(new Font(item, 12));
+                        setFont(new Font(item, fontSizeList.getSelectionModel().getSelectedItem()));
                     }
                 }
             };
             //cell.setPrefWidth(120);
             return cell;
         });
+
+
     }
     @FXML
     public void showNewItemDialog() {
@@ -348,6 +367,11 @@ public class Controller {
 
     @FXML
     public void handleFontChange() {
-        mainBorderPane.setStyle("-fx-font-family:"+"\""+(String)fontList.getValue()+"\""+";");
+        mainBorderPane.setStyle("-fx-font-family:"+"\""+(String)fontList.getValue()+ "\";");
+    }
+
+    @FXML
+    public  void handleFontSizeChange() {
+        itemDetailTextArea.setStyle("-fx-font-size:"+fontSizeList.getValue()+";");
     }
 }
