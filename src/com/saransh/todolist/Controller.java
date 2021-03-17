@@ -123,6 +123,8 @@ public class Controller {
                         (obs, wasEmpty, isNowEmpty) -> {
                             if (isNowEmpty) {
                                 cell.setContextMenu(null);
+                                cell.getStyleClass().removeAll();
+                                cell.getStyleClass().add("nullListCell");
                             } else {
                                 cell.setContextMenu(listContextMenu);
                             }
@@ -296,6 +298,7 @@ public class Controller {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             TodoData.getInstance().deleteTodoItem(item);
+
         }
     }
 
