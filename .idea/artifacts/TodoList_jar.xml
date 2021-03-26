@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="TodoList:jar">
+  <artifact type="jar" name="TodoList:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/TodoList_jar</output-path>
     <root id="archive" name="TodoList.jar">
       <element id="module-output" name="TodoList" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jlfgr-1.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/src.zip" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/javafx-swt.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/javafx.web.jar" path-in-jar="/" />
@@ -12,7 +13,6 @@
       <element id="extracted-dir" path="$PATH_TO_FX$/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/javafx.controls.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/javafx.graphics.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/jlfgr-1.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
